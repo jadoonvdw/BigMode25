@@ -22,7 +22,7 @@ var air_dash_direction: Vector3 = Vector3.ZERO
 #Jump buffer
 const JUMP_BUFFER_TIME= 0.2  # Adjust this value to control buffer window
 var jump_buffer_timer = 0.0
-var wants_to_jump = false
+
 
 @onready var head = $Head
 @onready var camera = $Head/Camera3D
