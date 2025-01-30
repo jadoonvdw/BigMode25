@@ -1,0 +1,5 @@
+[gd_scene load_steps=2 format=3 uid="uid://cyu3rn20vqe8b"]
+
+[ext_resource type="PackedScene" uid="uid://cy870l8102xk1" path="res://Assets/Player/armrig.glb" id="1_uw43h"]
+
+[node name="armrig" instance=ExtResource("1_uw43h")]

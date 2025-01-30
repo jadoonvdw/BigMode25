@@ -24,8 +24,14 @@ const JUMP_BUFFER_TIME= 0.2  # Adjust this value to control buffer window
 var jump_buffer_timer = 0.0
 
 
+
 @onready var head = $Head
 @onready var camera = $Head/Camera3D
+@onready var subviewport = $Head/Camera3D/SubViewportContainer/SubViewport
+@onready var viewport_cam = $Head/Camera3D/SubViewportContainer/SubViewport/Viewport_cam
+
+
+
 
 
 func _unhandled_input(event):
@@ -42,8 +48,15 @@ func _unhandled_input(event):
 	
 	if event is InputEventMouseButton and event.pressed and Input.get_mouse_mode() != Input.MOUSE_MODE_CAPTURED:
 		Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
+		
+
 
 func _physics_process(delta):
+	
+	#synchs viewport with main camera
+	viewport_cam.global_transform = camera.global_transform
+	subviewport.size = DisplayServer.window_get_size()
+	
 	# Add the gravity.
 	if not is_on_floor():
 		velocity += get_gravity() * delta
